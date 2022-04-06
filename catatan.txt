@@ -1,0 +1,9 @@
+initial population = 20
+chromosome = lokasi baris untuk tiap kolom
+fitness function = -total pair saling serang
+
+selection: pakai ranking, 5 ter atas (50%)
+== we got 20 more individual as next population
+
+crossovr => mask (univform crossoer) => 1 (pasti terjadi)
+mutation => 0.01
