@@ -25,6 +25,7 @@ def generate_initial_population(n):
 
 
 def get_fitness(chromosome):
+    '''chromosome => array of 8 integer between 0-7'''
     total_kill = 0
     for i, gen in enumerate(chromosome):
         # gen = int(gen)
@@ -54,15 +55,20 @@ def get_fitness(chromosome):
     return total_kill
 
 def mutate_chromosome(chromosome):
+    '''Mutate one gen out of chromosome into random integer between 0-7'''
     id_mutated_gen = rd.randint(0, 7)
     chromosome[id_mutated_gen] = rd.randint(0, 7)
 
 
 def make_baby(father, mother, mutation_rate):
+    '''Create 2 offsprings from 2 parrent using crossover and mutation'''
+    # mask to swap gen between parrent
     fate = rd.getrandbits(8)
+    
     child1 = []
     child2 = []
     # print(fate)
+    # crossover using mask
     bits = (1, 2, 4, 8, 16, 32, 64, 128)
     for i, bit in enumerate(bits):
         # print(fate&bit == bit)
@@ -78,6 +84,7 @@ def make_baby(father, mother, mutation_rate):
     mutate_1 = rd.uniform(0.0, 1.0)
     mutate_2 = rd.uniform(0.0, 1.0)
     if(mutate_1 < mutation_rate):
+        # mutate sir
         mutate_chromosome(child1)
     if(mutate_2 < mutation_rate):
         mutate_chromosome(child2)
@@ -86,6 +93,7 @@ def make_baby(father, mother, mutation_rate):
 
 
 def generate_next_population(parents, mutation_rate):
+    '''Generate next population based on parent list and mutation rate'''
     total_parrent = len(parents)
     new_population = []
     for i, individu in enumerate(parents):
