@@ -92,10 +92,14 @@ def make_baby(father, mother, mutation_rate):
     return Solution(child1), Solution(child2)
 
 
-def generate_next_population(parents, mutation_rate):
+def generate_next_population(parents, mutation_rate, show_parent=False):
     '''Generate next population based on parent list and mutation rate'''
     total_parrent = len(parents)
     new_population = []
+    if(show_parent):
+        for individu in parents:
+            print(individu)
+
     for i, individu in enumerate(parents):
         i+=1
         while(i < total_parrent):
