@@ -1,6 +1,6 @@
 from solution import Solution
 import random as rd
-# import numpy as np
+from termcolor import colored
 
 def get_random_chromosome():
     '''return random chromosome for 8 queens (8 char)'''
@@ -110,6 +110,19 @@ def generate_next_population(parents, mutation_rate, show_parent=False):
     # print(new_population)
     print(f"Got new: {len(new_population)} invididuals")
     return new_population
+
+def visualize_chromosome(chromosome):
+    background = ((None, 'on_white'), ('on_white', None))
+    print("+---+---+---+---+---+---+---+---+")
+    for gen in chromosome:
+        print("|", end="")
+        for i in range(8):
+            if(gen == i):
+                print(" Q |", end ="")
+            else:
+                print("   |", end="")
+        print("")
+        print("+---+---+---+---+---+---+---+---+")
 
 
 if __name__=="__main__":

@@ -1,5 +1,5 @@
 # from solution import Solution
-from utils import generate_initial_population, generate_next_population, get_fitness
+from utils import generate_initial_population, generate_next_population, get_fitness, visualize_chromosome
 
 
 def main():
@@ -27,6 +27,7 @@ def main():
         else:
             current_population = generate_next_population(current_population[0:pick_n_best], 1.0)
 
+    visualize_chromosome(current_population[0].chromosome)
 
 if __name__ =="__main__":
     main()
