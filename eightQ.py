@@ -1,12 +1,11 @@
 # from solution import Solution
-from utils import generate_initial_population, generate_next_population, get_fitness, visualize_chromosome
+from utils import generate_initial_population, generate_next_population, get_fitness, visualize_chromosome, get_parameter
 
 
 def main():
     print("8 Queens Baby :D")
     # generate populations
-    start_individuals = 20
-    pick_n_best = 8
+    start_individuals, pick_n_best, mutation_rate = get_parameter()
     current_population = generate_initial_population(start_individuals)
     # print(init_population)
     isReached = False
@@ -25,7 +24,7 @@ def main():
             print("Reached")
             isReached = True
         else:
-            current_population = generate_next_population(current_population[0:pick_n_best], 1.0)
+            current_population = generate_next_population(current_population[0:pick_n_best], mutation_rate)
 
     visualize_chromosome(current_population[0].chromosome)
 

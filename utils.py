@@ -111,8 +111,40 @@ def generate_next_population(parents, mutation_rate, show_parent=False):
     print(f"Got new: {len(new_population)} invididuals")
     return new_population
 
+
+def get_parameter():
+    start_individuals = -1
+    while(start_individuals < 2):
+        start_individuals = input("How many individuals do you want your population starts with? [min: 2]\n>>>")
+        try:
+            start_individuals = int(start_individuals)
+        except ValueError:
+            print("Your Input can't be converted into integer")
+    
+    best_n = -1
+    while(best_n < 2 or best_n > start_individuals):
+        best_n = input("How many individuals do you want to breed based on fitness rank ? [min: 2]\n>>>")
+        try:
+            best_n= int(best_n)
+        except ValueError:
+            print("Your Input can't be converted into integer")
+    
+    mutation_rate = -1
+    while(mutation_rate < 0 or mutation_rate > 1):
+        mutation_rate = input("Set your mutation rate [0, 1]:\n>>>")
+        try:
+            mutation_rate = float(mutation_rate)
+        except ValueError:
+            print("Your Input can't be converted into float")
+    
+    return start_individuals, best_n, mutation_rate
+
+    
+    
+
+
 def visualize_chromosome(chromosome):
-    background = ((None, 'on_white'), ('on_white', None))
+    # background = ((None, 'on_white'), ('on_white', None))
     print("+---+---+---+---+---+---+---+---+")
     for gen in chromosome:
         print("|", end="")
