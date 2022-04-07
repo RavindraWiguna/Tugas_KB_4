@@ -145,14 +145,28 @@ def get_parameter():
 
 def visualize_chromosome(chromosome):
     # background = ((None, 'on_white'), ('on_white', None))
+    canvas = [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+    ]
+    # put queen on each col
+    for i, gen in enumerate(chromosome):
+        canvas[gen][i] = 1
+    
     print("+---+---+---+---+---+---+---+---+")
-    for gen in chromosome:
+    for row in canvas:
         print("|", end="")
-        for i in range(8):
-            if(gen == i):
-                print(" Q |", end ="")
+        for col in row:
+            if(col):
+                print(" Q ", end="|")
             else:
-                print("   |", end="")
+                print("   ", end="|")
         print("")
         print("+---+---+---+---+---+---+---+---+")
 
