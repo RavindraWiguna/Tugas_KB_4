@@ -1,6 +1,5 @@
 from solution import Solution
 import random as rd
-from termcolor import colored
 
 def get_random_chromosome():
     '''return random chromosome for 8 queens (8 char)'''
@@ -115,7 +114,7 @@ def generate_next_population(parents, mutation_rate, show_parent=False):
 def get_parameter():
     start_individuals = -1
     while(start_individuals < 2):
-        start_individuals = input("How many individuals do you want your population starts with? [min: 2]\n>>>")
+        start_individuals = input("How many individuals do you want your population starts with? [min: 2]\n>>> ")
         try:
             start_individuals = int(start_individuals)
         except ValueError:
@@ -123,7 +122,7 @@ def get_parameter():
     
     best_n = -1
     while(best_n < 2 or best_n > start_individuals):
-        best_n = input("How many individuals do you want to breed based on fitness rank ? [min: 2]\n>>>")
+        best_n = input("How many individuals do you want to breed based on fitness rank ? [min: 2]\n>>> ")
         try:
             best_n= int(best_n)
         except ValueError:
@@ -131,17 +130,13 @@ def get_parameter():
     
     mutation_rate = -1
     while(mutation_rate < 0 or mutation_rate > 1):
-        mutation_rate = input("Set your mutation rate [0, 1]:\n>>>")
+        mutation_rate = input("Set your mutation rate [0, 1]:\n>>> ")
         try:
             mutation_rate = float(mutation_rate)
         except ValueError:
             print("Your Input can't be converted into float")
     
     return start_individuals, best_n, mutation_rate
-
-    
-    
-
 
 def visualize_chromosome(chromosome):
     # background = ((None, 'on_white'), ('on_white', None))
